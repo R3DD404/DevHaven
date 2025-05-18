@@ -2,18 +2,18 @@ import { Analytics } from '@vercel/analytics/react';
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
     <html lang="en">
       <head>
-        <title>Next.js</title>
+        <link rel="icon" href="/favicon.ico" /> {/* Optional Favicon */}
       </head>
-      <body>
+      <body className={inter.className}>
         {children}
-        <Analytics mode="production" />
+        <Analytics />
       </body>
     </html>
-  );
+  )
 }
