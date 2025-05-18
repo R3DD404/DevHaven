@@ -54,7 +54,7 @@ const VibeCard: React.FC<VibeCardProps> = ({ quote, name, onClose }) => {
 
   const shareOnTwitter = () => {
     const text = `"${quote}" - DevHaven\n\nCheck out this vibe card made with:`;
-    const url = 'https://devhaven.vercel.app';
+    const url = 'https://devhaven-xi.vercel.app/';
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(twitterUrl, '_blank', 'width=550,height=420');
   };
@@ -78,7 +78,7 @@ const VibeCard: React.FC<VibeCardProps> = ({ quote, name, onClose }) => {
           files: [file],
           title: 'My DevHaven Vibe Card',
           text: `"${quote}" - ${name || 'Anonymous Dev'}`,
-          url: 'https://devhaven.vercel.app',
+          url: 'https://devhaven-xi.vercel.app/',
         });
       } else {
         shareOnTwitter(); // Fallback to Twitter if native sharing isn't available
@@ -132,7 +132,7 @@ const VibeCard: React.FC<VibeCardProps> = ({ quote, name, onClose }) => {
               <div className="flex items-center text-xs text-gray-400">
                 <span>powered by</span>
                 <a
-                  href="https://devhaven.vercel.app"
+                  href="https://devhaven-xi.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-1 font-semibold hover:text-purple-300 transition-colors"
