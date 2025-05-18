@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 246 30% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 246 30% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 246 30% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 246 70% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 33 100% 96%;
+    --secondary-foreground: 246 20% 33%;
+
+    --muted: 246 20% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 173 58% 90%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 246 30% 20%;
+    --input: 246 30% 20%;
+    --ring: 246 70% 60%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at top right, rgba(99, 77, 147, 0.3), transparent 40%), 
+      radial-gradient(circle at left, rgba(60, 114, 101, 0.15), transparent 30%),
+      radial-gradient(circle at bottom, rgba(124, 93, 78, 0.15), transparent 40%);
+    background-size: 100% 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  #root {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Add scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(124, 124, 164, 0.3);
+    border-radius: 20px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(124, 124, 164, 0.5);
+  }
+}
+
+@layer components {
+  .haven-card {
+    @apply bg-black/50 backdrop-blur-xl rounded-2xl shadow-xl border border-white/10 m-0 md:m-4;
+  }
+  
+  .haven-button {
+    @apply px-6 py-4 text-lg rounded-full font-medium transition-all duration-300 text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-[1.02] focus:ring-2 focus:ring-purple-400/50 focus:outline-none;
+  }
+
+  .haven-input {
+    @apply w-full px-5 py-5 text-lg bg-black/50 rounded-xl border border-gray-700/50 focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none transition;
+  }
+
+  .chat-bubble-user {
+    @apply rounded-2xl rounded-tr-sm max-w-[85%] ml-auto transform transition-all hover:scale-[1.01] hover:shadow-lg;
+  }
+
+  .chat-bubble-ai {
+    @apply rounded-2xl rounded-tl-sm max-w-[85%] mr-auto transform transition-all hover:scale-[1.01] hover:shadow-lg;
+  }
+  
+  .breathing-animation {
+    animation: breathing 8s ease-in-out infinite;
+  }
+  
+  .floating-animation {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  .pulse-animation {
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -150%;
+    bottom: 0;
+    left: -150%;
+    background: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2.5s infinite;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-purple-500\/20 {
+    scrollbar-color: rgba(168, 85, 247, 0.2) transparent;
+  }
+
+  /* Healing pulse animation */
+  .healing-pulse {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+    animation: healing-pulse 2s infinite;
+  }
+}
+
+/* Animation keyframes */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes breathing {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  0% { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes healing-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(168, 85, 247, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+  }
+}
+
+.floating-element {
+  animation: float 4s ease-in-out infinite;
+}
+
+.glow-effect {
+  box-shadow: 0 0 15px 2px rgba(168, 85, 247, 0.2);
+}
+
+.animate-fade-in {
+  animation: fadeUp 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+.btn-gradient-hover {
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease-out;
+  background-position: 0% 0%;
+}
+
+.btn-gradient-hover:hover {
+  background-position: 100% 0%;
+}
+
+/* Healing sparkle */
+.healing-sparkle {
+  position: relative;
+}
+
+.healing-sparkle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 10.5%),
+                    radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 10.5%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  animation: sparkle-movement 4s linear infinite;
+  opacity: 0.2;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+@keyframes sparkle-movement {
+  0% { background-position: 0 0, 15px 15px; }
+  100% { background-position: 30px 30px, 45px 45px; }
+}
+
+/* Typing animation */
+.typing-dots {
+  display: flex;
+  align-items: center;
+}
